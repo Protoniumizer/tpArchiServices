@@ -1,0 +1,344 @@
+INFO  2022-05-06 14:39:55,061 [Main Server Thread] com.mirth.connect.server.Mirth: Mirth Connect 3.11.0 (Built on April 6, 2021) server successfully started.
+INFO  2022-05-06 14:39:55,063 [Main Server Thread] com.mirth.connect.server.Mirth: This product was developed by NextGen Healthcare (https://www.nextgen.com) and its contributors (c)2005-2022.
+INFO  2022-05-06 14:39:55,064 [Main Server Thread] com.mirth.connect.server.Mirth: Running OpenJDK 64-Bit Server VM 11.0.15 on Linux (5.10.16.3-microsoft-standard-WSL2, amd64), postgres, with charset UTF-8.
+INFO  2022-05-06 14:39:55,064 [Main Server Thread] com.mirth.connect.server.Mirth: Web server running at http://172.18.0.3:8080/ and https://172.18.0.3:8443/
+INFO  2022-05-09 09:48:05,025 [Shutdown Hook Thread] com.mirth.connect.server.Mirth: shutting down mirth due to normal request
+INFO  2022-05-14 13:51:48,014 [Main Server Thread] com.mirth.connect.server.Mirth: Mirth Connect 3.11.0 (Built on April 6, 2021) server successfully started.
+INFO  2022-05-14 13:51:48,017 [Main Server Thread] com.mirth.connect.server.Mirth: This product was developed by NextGen Healthcare (https://www.nextgen.com) and its contributors (c)2005-2022.
+INFO  2022-05-14 13:51:48,017 [Main Server Thread] com.mirth.connect.server.Mirth: Running OpenJDK 64-Bit Server VM 11.0.15 on Linux (5.10.16.3-microsoft-standard-WSL2, amd64), postgres, with charset UTF-8.
+INFO  2022-05-14 13:51:48,018 [Main Server Thread] com.mirth.connect.server.Mirth: Web server running at http://172.18.0.2:8080/ and https://172.18.0.2:8443/
+INFO  2022-05-18 17:20:33,898 [Main Server Thread] com.mirth.connect.server.Mirth: Mirth Connect 3.11.0 (Built on April 6, 2021) server successfully started.
+INFO  2022-05-18 17:20:33,901 [Main Server Thread] com.mirth.connect.server.Mirth: This product was developed by NextGen Healthcare (https://www.nextgen.com) and its contributors (c)2005-2022.
+INFO  2022-05-18 17:20:33,901 [Main Server Thread] com.mirth.connect.server.Mirth: Running OpenJDK 64-Bit Server VM 11.0.15 on Linux (5.10.16.3-microsoft-standard-WSL2, amd64), postgres, with charset UTF-8.
+INFO  2022-05-18 17:20:33,901 [Main Server Thread] com.mirth.connect.server.Mirth: Web server running at http://172.18.0.3:8080/ and https://172.18.0.3:8443/
+ERROR 2022-05-19 08:55:36,514 [Channel DeployTask Thread on (31deeab7-ef57-4a9d-b205-0903ec76f679) < pool-11-thread-1] com.mirth.connect.server.transformers.JavaScriptFilterTransformer: Filter/Transformer error
+java.lang.Exception: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	1c6f4566-b605-486f-b39b-527e4fb08c51
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:670)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:72)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.<init>(JavaScriptFilterTransformer.java:58)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createFilterTransformerExecutor(DonkeyEngineController.java:1407)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createDestinationConnector(DonkeyEngineController.java:1493)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createChannelFromModel(DonkeyEngineController.java:1172)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1793)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.execute(DonkeyEngineController.java:1777)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:67)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:16)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	1c6f4566-b605-486f-b39b-527e4fb08c51
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:669)
+	... 13 more
+
+ERROR 2022-05-19 08:55:36,519 [Channel DeployTask Thread on (31deeab7-ef57-4a9d-b205-0903ec76f679) < pool-11-thread-1] com.mirth.connect.server.channel.LoggingTaskHandler: com.mirth.connect.donkey.server.DeployException: Error initializing JavaScript Filter/Transformer
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1795)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.execute(DonkeyEngineController.java:1777)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:67)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:16)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.mirth.connect.server.transformers.JavaScriptInitializationException: Error initializing JavaScript Filter/Transformer
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:80)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.<init>(JavaScriptFilterTransformer.java:58)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createFilterTransformerExecutor(DonkeyEngineController.java:1407)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createDestinationConnector(DonkeyEngineController.java:1493)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createChannelFromModel(DonkeyEngineController.java:1172)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1793)
+	... 7 more
+Caused by: java.lang.Exception: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	1c6f4566-b605-486f-b39b-527e4fb08c51
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:670)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:72)
+	... 12 more
+Caused by: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	1c6f4566-b605-486f-b39b-527e4fb08c51
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:669)
+	... 13 more
+
+ERROR 2022-05-19 08:55:37,177 [Channel DeployTask Thread on (31deeab7-ef57-4a9d-b205-0903ec76f679) < pool-11-thread-1] com.mirth.connect.server.transformers.JavaScriptFilterTransformer: Filter/Transformer error
+java.lang.Exception: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	2ddf4107-a5e6-494b-81ef-57357f91d743
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:670)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:72)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.<init>(JavaScriptFilterTransformer.java:58)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createFilterTransformerExecutor(DonkeyEngineController.java:1407)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createDestinationConnector(DonkeyEngineController.java:1493)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createChannelFromModel(DonkeyEngineController.java:1172)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1793)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.execute(DonkeyEngineController.java:1777)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:67)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:16)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	2ddf4107-a5e6-494b-81ef-57357f91d743
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:669)
+	... 13 more
+
+ERROR 2022-05-19 08:55:37,177 [Channel DeployTask Thread on (31deeab7-ef57-4a9d-b205-0903ec76f679) < pool-11-thread-1] com.mirth.connect.server.channel.ErrorTaskHandler: com.mirth.connect.donkey.server.DeployException: Error initializing JavaScript Filter/Transformer
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1795)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.execute(DonkeyEngineController.java:1777)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:67)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:16)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.mirth.connect.server.transformers.JavaScriptInitializationException: Error initializing JavaScript Filter/Transformer
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:80)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.<init>(JavaScriptFilterTransformer.java:58)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createFilterTransformerExecutor(DonkeyEngineController.java:1407)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createDestinationConnector(DonkeyEngineController.java:1493)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createChannelFromModel(DonkeyEngineController.java:1172)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1793)
+	... 7 more
+Caused by: java.lang.Exception: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	2ddf4107-a5e6-494b-81ef-57357f91d743
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:670)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:72)
+	... 12 more
+Caused by: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	2ddf4107-a5e6-494b-81ef-57357f91d743
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:669)
+	... 13 more
+
+ERROR 2022-05-21 18:10:35,893 [Channel DeployTask Thread on (31deeab7-ef57-4a9d-b205-0903ec76f679) < pool-9-thread-1] com.mirth.connect.server.transformers.JavaScriptFilterTransformer: Filter/Transformer error
+java.lang.Exception: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	98934966-50d5-4258-932f-738ee8534490
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:670)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:72)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.<init>(JavaScriptFilterTransformer.java:58)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createFilterTransformerExecutor(DonkeyEngineController.java:1407)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createDestinationConnector(DonkeyEngineController.java:1493)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createChannelFromModel(DonkeyEngineController.java:1172)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1793)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.execute(DonkeyEngineController.java:1777)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:67)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:16)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	98934966-50d5-4258-932f-738ee8534490
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:669)
+	... 13 more
+
+ERROR 2022-05-21 18:10:35,897 [Channel DeployTask Thread on (31deeab7-ef57-4a9d-b205-0903ec76f679) < pool-9-thread-1] com.mirth.connect.server.channel.LoggingTaskHandler: com.mirth.connect.donkey.server.DeployException: Error initializing JavaScript Filter/Transformer
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1795)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.execute(DonkeyEngineController.java:1777)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:67)
+	at com.mirth.connect.server.channel.ChannelTask.call(ChannelTask.java:16)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: com.mirth.connect.server.transformers.JavaScriptInitializationException: Error initializing JavaScript Filter/Transformer
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:80)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.<init>(JavaScriptFilterTransformer.java:58)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createFilterTransformerExecutor(DonkeyEngineController.java:1407)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createDestinationConnector(DonkeyEngineController.java:1493)
+	at com.mirth.connect.server.controllers.DonkeyEngineController.createChannelFromModel(DonkeyEngineController.java:1172)
+	at com.mirth.connect.server.controllers.DonkeyEngineController$DeployTask.doDeploy(DonkeyEngineController.java:1793)
+	... 7 more
+Caused by: java.lang.Exception: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	98934966-50d5-4258-932f-738ee8534490
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:670)
+	at com.mirth.connect.server.transformers.JavaScriptFilterTransformer.initialize(JavaScriptFilterTransformer.java:72)
+	... 12 more
+Caused by: com.mirth.connect.server.MirthJavascriptTransformerException: 
+SCRIPT SOURCE:	98934966-50d5-4258-932f-738ee8534490
+SOURCE CODE:	
+100: if (msg.namespace('') != undefined) { default xml namespace = msg.namespace(''); } else { default xml namespace = ''; }
+101: function doFilter() { phase[0] = 'filter'; return true; }function doTransform() { phase[0] = 'transformer'; logger = Packages.org.apache.log4j.Logger.getLogger(phase[0]);
+102: 
+103: 
+104: const formatLongDate = (date) => {	return date === '' ? '' : date.substring(0, 4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8) + ' '            			    + date.substring(8, 10) + ':' + date.substring(10, 12) + ':' + date.substring(12, 14);};var data = {	iep: msg['row']['column1'].toString(),	orientationUf: msg['row']['column2'].toString(),	orientationChambre: msg['row']['column3'].toString(),	orientationLit: msg['row']['column4'].toString(),	//dateHeureIdeale: msg['row']['column5'].toString()+':00',	dateHeureIdeale: msg['row']['column5'].toString(),	raison: msg['row']['column6'].toString(),	orientationIdealeFlag: msg['row']['column7'].toString(),	preadmissionFlag: msg['row']['column8'].toString(),	hebergementFlag: msg['row']['column9'].toString(),	diagFlag: msg['row']['column10'].toString()};msg = data;
+105: if ('xml' === typeof msg) {
+106:     if (msg.hasSimpleContent()) {
+107:         msg = msg.toXMLString();
+108:     }
+109: } else if ('undefined' !== typeof msg && msg !== null) {
+LINE NUMBER:	105
+LINE SOURCE:	if ('xml' === typeof msg) {
+DETAILS:	missing formal parameter
+
+	at com.mirth.connect.server.util.javascript.JavaScriptUtil.compileAndAddScript(JavaScriptUtil.java:669)
+	... 13 more
+
+INFO  2022-05-21 18:10:36,025 [Main Server Thread] com.mirth.connect.server.Mirth: Mirth Connect 3.11.0 (Built on April 6, 2021) server successfully started.
+INFO  2022-05-21 18:10:36,030 [Main Server Thread] com.mirth.connect.server.Mirth: This product was developed by NextGen Healthcare (https://www.nextgen.com) and its contributors (c)2005-2022.
+INFO  2022-05-21 18:10:36,031 [Main Server Thread] com.mirth.connect.server.Mirth: Running OpenJDK 64-Bit Server VM 11.0.15 on Linux (5.10.16.3-microsoft-standard-WSL2, amd64), postgres, with charset UTF-8.
+INFO  2022-05-21 18:10:36,034 [Main Server Thread] com.mirth.connect.server.Mirth: Web server running at http://172.18.0.3:8080/ and https://172.18.0.3:8443/

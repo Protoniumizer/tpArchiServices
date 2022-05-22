@@ -1,0 +1,120 @@
+<html>
+  
+<head>
+    <meta charset="UTF-8">
+  
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+  
+<body>
+  
+    <form method="post" action="createJsonPatient.php">
+  
+        <div id="form_page">
+  
+            <div id="form_body">
+                <div id="head">
+                    <h1 id="heading">AJOUT PATIENT</h1>
+                </div>
+                <br />
+                <div id="input_ipp" class="input">
+                    <input id="ipp" type="text" 
+                    Placeholder="id permanent patient" name="ipp" required>
+                </div>
+
+                <div id="input_name" class="input">
+                    <input id="name" type="text" 
+                        Placeholder="Name" name="name" 
+                        required>
+                </div>
+
+                <div id="input_namemar" class="input">
+                    <input id="namemar" type="text" 
+                        Placeholder="nom marital" name="namemar" 
+                        >
+                </div>
+
+                <div id="input_prenom" class="input">
+                    <input id="prenom" type="text" 
+                        Placeholder="prenom" name="prenom" 
+                        required>
+                </div>
+
+                <div id="input_ddn" class="input">
+                    <input id="ddn" type="date" name="ddn" required>
+                </div>
+
+                <div id="input_intit" class="input">
+                    <input id="intit" type="text" 
+                        Placeholder="intitulé civilité" name="intit" 
+                        required>
+                </div>
+
+                <div id="input_sexe" class="input">
+                    <select name="sexe" required>
+                        <option value="femme">Femme</option>
+                        <option value="homme">Homme</option>
+                    </select>
+                </div>
+
+                <div id="input_iep" class="input">
+                    <input id="iep" type="text" 
+                        Placeholder="id entrée patient" name="iep" required 
+                        >
+                </div>
+
+                <div id="input_adr1" class="input">
+                    <input id="adr1" type="text" 
+                        Placeholder="Adresse1" name="adr1"  
+                        >
+                </div>
+
+                <div id="input_adr2" class="input">
+                    <input id="adr2" type="text" 
+                        Placeholder="Adresse2" name="adr2"  
+                        >
+                </div>
+
+                <div id="input_cp" class="input">
+                    <input id="cp" type="number" 
+                        Placeholder="59300" name="cp"  
+                        >
+                </div>
+
+                <div id="input_ville" class="input">
+                    <input id="ville" type="text" 
+                        Placeholder="Ville" name="ville"  
+                        >
+                </div>
+
+                <div id="input_pays" class="input">
+                    <input id="pays" type="text" 
+                        Placeholder="Pays" name="pays"  
+                        >
+                </div>
+
+                <div id="input_tel" class="input">
+                    <input id="tel" type="tel" 
+                        Placeholder="0678980098" name="tel"  
+                        >
+                </div>
+
+                <div id="input_paysn" class="input">
+                    <input id="paysn" type="text" 
+                        Placeholder="Paysn" name="paysn"  
+                        >
+                </div>
+
+                <div class="id input">
+                    <input id="submit" type="submit" 
+                        name="submit" value="submit" 
+                        onclick="on_submit()">
+                </div>
+            </div>
+        </div>
+    </form>
+  
+</body>
+  
+</html>
